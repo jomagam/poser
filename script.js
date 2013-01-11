@@ -1,4 +1,7 @@
 var got_images = 0;
+var tab = chrome.tabs.getCurrent;
+console.log("FFOOOO");
+alert("URL=" + tab.id);
 chrome.extension.onRequest.addListener(function(request) {
     if(request.sorry){
 	$('#imageinfo').html(request.sorry);

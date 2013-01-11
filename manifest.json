@@ -4,6 +4,10 @@
     "description": "Extension to identify stolen photos on a page",
     "icons": { "128": "poser.png" },
     "permissions": [ "tabs", "http://*/*", "https://*/*" ],
-    "browser_action": { "default_popup": "popup.html", "default_icon": "poser.png" },
+    "browser_action": { 
+	"default_popup": "popup.html", 
+	"default_icon": "poser.png", 
+	"default_title": "Find if an image shows up on other pages"
+	},
     "manifest_version": 2
 }
