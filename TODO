@@ -1,0 +1,4 @@
+1. Actually check the images in Google
+2. Create and append DOM elements instead of just directly manipulating HTML
+3. Create settings page
+4. Only allow plugin on https? content
