@@ -4,7 +4,7 @@ var MIN_WIDTH = 100;
 
 $('img').each(function(){
     if(this.width > MIN_WIDTH && ! dupes[this.src]){
-	chrome.extension.sendRequest({"src": this.src, "width": this.width});
+	chrome.extension.sendMessage({"src": this.src, "width": this.width});
 	dupes[this.src] = 1;
 	found_image++;
     }

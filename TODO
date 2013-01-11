@@ -1,8 +1,7 @@
-1. Actually check the images in Google
-2. Create and append DOM elements instead of just directly manipulating HTML
-3. Create settings page
-4. Only allow plugin on https? content
-5. Use sendMessage onMessage instead of sendRequest and onRequest
-6. Add website
-7. Create key 
-8. Make available for others
+o Actually check the images in Google
+o Create and append DOM elements instead of just directly manipulating HTML
+o Create settings page
+o Only allow plugin on https? content
+o Add website
+o Create key 
+o Make available for others
