@@ -1,0 +1,9 @@
+{
+    "name": "Poser",
+    "version": "1.0",
+    "description": "Extension to identify stolen photos on a page",
+    "icons": { "128": "poser.png" },
+    "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+    "browser_action": { "default_popup": "popup.html", "default_icon": "poser.png" },
+    "manifest_version": 2
+}
