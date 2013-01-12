@@ -1,6 +1,6 @@
 var found_image = 0;
 var dupes = {};
-var MIN_WIDTH = 100;
+var MIN_WIDTH = localStorage["minumum_width"] || localStorage["DEFAULT_MINIMUM_WIDTH"] || 100;
 
 $('img').each(function(){
     if(this.width > MIN_WIDTH && ! dupes[this.src]){

@@ -18,6 +18,7 @@ chrome.tabs.executeScript(null, {"file": "jquery.min.js"});
 chrome.tabs.executeScript(null, {"file": "background.js"});
 
 var sentone = 0;
+var nextreq = 0;
 
 function search_for_image(request)
 {
@@ -25,10 +26,7 @@ function search_for_image(request)
     console.log("SEARCH FOR: " + current_url);
     var search_uri = "https://www.google.com/searchbyimage?image_url=" + encodeURIComponent(current_url);
 //    console.log("SEARCH URI:" + search_uri);
-
-    if(sentone){
-	sleep(1000);
-    }
+    $('#imageinfo').html("Checking " + current_url);
 
     var req = new XMLHttpRequest();
 
@@ -55,8 +53,13 @@ function search_for_image(request)
     };
     req.open('GET', search_uri, true);
     sent_requests++;
-    req.send(null);
-    sentone++;
+
+    console.log("nextreq=" + nextreq);
+    setTimeout(function(){
+	req.send(null);
+	sentone++;
+    }, nextreq);
+    nextreq += 300;
 }
 
 function see_if_last()
@@ -71,11 +74,4 @@ function see_if_last()
 	    $('#imageinfo').html("Showing information on " + found + " image" + plural + " in new tab" + plural + ".");
 	}
     }
-}
-
-function sleep(ms)
-{
-    var dt = new Date();
-    dt.setTime(dt.getTime() + ms);
-    while (new Date().getTime() < dt.getTime());
 }
