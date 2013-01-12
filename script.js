@@ -25,7 +25,6 @@ function search_for_image(request)
     var current_url = request.src;
     console.log("SEARCH FOR: " + current_url);
     var search_uri = "https://www.google.com/searchbyimage?image_url=" + encodeURIComponent(current_url);
-//    console.log("SEARCH URI:" + search_uri);
     $('#imageinfo').html("Checking " + current_url);
 
     var req = new XMLHttpRequest();
@@ -33,13 +32,14 @@ function search_for_image(request)
     req.onload = function(){
 	var body = req.responseText;
 
-	if(body.indexOf("Best guess for this image") != -1){
+	if((body.indexOf("Best guess for this image") != -1) 		|| 
+	   (body.indexOf("Pages that include matching images") != -1)
+	    ){
 	    chrome.tabs.create({"url": search_uri, "selected": false});
 	    found++;
 	    console.log("FOUND:" + search_uri);
 	}
 	else {
-//	    $('#imageinfo').html($('#imageinfo').html() + current_url + " OK<br>");
 	    console.log("NOT FOUND:" + search_uri);
 	}
 	sent_requests--;
@@ -59,7 +59,7 @@ function search_for_image(request)
 	req.send(null);
 	sentone++;
     }, nextreq);
-    nextreq += 300;
+    nextreq += 500;
 }
 
 function see_if_last()
