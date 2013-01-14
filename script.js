@@ -37,7 +37,6 @@ function search_for_image(request)
     var current_url = request.src;
     console.log("SEARCH FOR: " + current_url);
     var search_uri = "https://www.google.com/searchbyimage?image_url=" + encodeURIComponent(current_url);
-    $('#imageinfo').html("Checking " + current_url);
 
     var req = new XMLHttpRequest();
 
