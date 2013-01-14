@@ -16,9 +16,18 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 
 
 var minimum_width = localStorage["minimum_width"] || localStorage["DEFAULT_MINIMUM_WIDTH"] || 100;
-chrome.tabs.executeScript(null, {"code": "var minimum_width_master = " + minimum_width + ";"});
-chrome.tabs.executeScript(null, {"file": "jquery.min.js"});
-chrome.tabs.executeScript(null, {"file": "background.js"});
+chrome.tabs.getSelected(null, function(tab){
+    var taburl = tab.url; 
+
+    if(taburl.indexOf("https:") == 0  || taburl.indexOf("http:") == 0){
+	chrome.tabs.executeScript(null, {"code": "var minimum_width_master = " + minimum_width + ";"});
+	chrome.tabs.executeScript(null, {"file": "jquery.min.js"});
+	chrome.tabs.executeScript(null, {"file": "background.js"});
+    }
+    else {
+	$('#imageinfo').html("Cannot do that on this page.");
+    }
+});
 
 var sentone = 0;
 var nextreq = 0;
