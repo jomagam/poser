@@ -1,6 +1,8 @@
 var found_image = 0;
 var dupes = {};
-var MIN_WIDTH = localStorage["minumum_width"] || localStorage["DEFAULT_MINIMUM_WIDTH"] || 100;
+
+// minimum_width_master is injected from the popup
+var MIN_WIDTH = minimum_width_master || 100;
 
 $('img').each(function(){
     if(this.width > MIN_WIDTH && ! dupes[this.src]){

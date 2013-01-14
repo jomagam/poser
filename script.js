@@ -14,6 +14,9 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     }
 });
 
+
+var minimum_width = localStorage["minimum_width"] || localStorage["DEFAULT_MINIMUM_WIDTH"] || 100;
+chrome.tabs.executeScript(null, {"code": "var minimum_width_master = " + minimum_width + ";"});
 chrome.tabs.executeScript(null, {"file": "jquery.min.js"});
 chrome.tabs.executeScript(null, {"file": "background.js"});
 
